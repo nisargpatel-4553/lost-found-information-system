@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+    </div>
+
+    <h2 style="color:white; margin-left:75px;">Admin Panel</h2>
+
+    <div class="nav-right">
+        <a href="/admin_dashboard">Back</a>
+        <a href="/admin_logout">Logout</a>
+    </div>
+</div>
+
+<!-- ===== EDIT FORM ===== -->
+<div class="edit-container">
+    <form method="POST" enctype="multipart/form-data" class="edit-form">
+
+        <label>Item Name</label>
+        <input type="text" name="item_name" value="{{ item[2] }}" required>
+
+        <label>Description</label>
+        <textarea name="description" required>{{ item[3] }}</textarea>
+
+        <label>Contact</label>
+        <input type="text" name="contact" value="{{ item[5] }}" required>
+
+        <label>Current Image</label><br>
+        <img src="{{ url_for('static', filename='uploads/' + item[6]) }}"
+             style="width:160px; border-radius:8px; margin-bottom:15px;"><br>
+
+        <label>Change Image</label>
+        <input type="file" name="photo">
+
+        <button type="submit">Update Item</button>
+
+    </form>
+</div>
+
+<footer class="footer">
+    <p class="copy">© 2026 Nisarg Patel | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

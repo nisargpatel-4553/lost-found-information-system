@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost & Found</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  
+    <div class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+        </div>
+    
+        <div class="nav-right">
+    
+            <a href="/">Home</a>
+    
+            {% if 'user' in session %}
+            <a href="/report_lost">Report Lost</a>
+            <a href="/report_found">Report Found</a>
+            <a href="/view_items">View Items</a>
+            <a href="/logout">Logout</a>
+
+        
+            <div class="profile-menu">
+                
+                
+                <img src="{{ url_for('static', filename='avatar.png') }}" class="avatar">
+        
+            
+                <div class="email-below">
+                    {{ session['user'] }}
+                </div>
+        
+                
+             
+                
+        
+            </div>
+        
+        
+    
+            {% else %}
+                <a href="/signup">Sign Up</a>
+                <a href="/login">Login</a>
+            {% endif %}
+    
+        </div>
+    </div>
+    
+    <div class="hero">
+        <h1>Welcome to the Lost & Found Information System</h1>
+        <p>Helping people reconnect with their lost items</p>
+    </div>
+
+    <footer class="footer">
+        <p class="copy">© 2026 Nisarg Patel | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+        </div>
+    
+        <h2 style="color:white; margin-left:26%;">Admin Panel</h2>
+        
+    
+        <div class="nav-right">
+            <a href="/">Home</a>
+            <a href="/admin_logout">Logout</a>
+            <a href="{{ url_for('admin_change_credentials') }}">Manage Account</a>
+
+
+    
+            <!-- Admin Profile Menu -->
+            <div class="profile-menu">
+    
+                <img src="{{ url_for('static', filename='avatar.png') }}"
+                     class="avatar"
+                     tabindex="0">
+    
+                <div class="email-below">
+                    {{ session['admin'] }}
+                </div>
+    
+               
+    
+            </div>
+    
+        </div>
+    </div>
+    
+<br>
+
+<h1 style="color:white; margin-left:38%;" >Admin Dashboard</h1>
+
+<br>
+
+
+
+<div class="admin-container">
+<table class="admin-table">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Type</th>
+
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Contact</th>
+            <th>Photo</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ loop.index }}</td>
+
+            <td>{{ item[1] }}</td>
+            <td>
+                {% if item[4] == 'Lost' %}
+                    <span class="lost-badge">Lost</span>
+                {% else %}
+                    <span class="found-badge">Found</span>
+                {% endif %}
+            </td>
+
+            <td>{{ item[2] }}</td>
+
+            
+            <td class="desc">{{ item[3] }}</td>
+
+            <td>{{ item[5] }}</td>
+
+            <td>
+                <img src="{{ url_for('static', filename='uploads/' + item[6]) }}" class="admin-img">
+            </td>
+
+            <td>
+                <div class="actions">
+                    <a href="{{ url_for('admin_edit', id=item[0]) }}" class="edit-btn">Edit</a>
+                    <a href="{{ url_for('admin_delete', id=item[0]) }}" class="delete-btn">Delete</a>
+
+                    
+                </div>
+            </td>
+            
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+</div>
+
+<footer class="footer">
+    <p class="copy">© 2026 Nisarg Patel | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
