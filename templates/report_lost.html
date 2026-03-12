@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Lost Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+        </div>
+    
+        <div class="nav-right">
+
+            <a href="/">Home</a>
+        
+            {% if 'user' in session %}
+            <a href="/report_lost">Report Lost</a>
+            <a href="/report_found">Report Found</a>
+            <a href="/view_items">View Items</a>
+            <a href="/logout">Logout</a>
+
+        
+            <div class="profile-menu">
+                
+                
+                <img src="{{ url_for('static', filename='avatar.png') }}" class="avatar">
+        
+            
+                <div class="email-below">
+                    {{ session['user'] }}
+                </div>
+        
+                
+               
+            </div>
+        
+        
+    
+            {% else %}
+                <a href="/signup">Sign Up</a>
+                <a href="/login">Login</a>
+            {% endif %}
+    
+        </div>
+    </div>
+
+        
+    <form method="POST" enctype="multipart/form-data">
+        <input type="email" value="{{ session['user'] }}" readonly><br><br>
+    
+        <input type="text" name="item_name" placeholder="Item Name" required><br><br>
+    
+        <textarea name="description" placeholder="Where lost?" required></textarea><br><br>
+    
+        <input type="text" name="contact" placeholder="Contact Number" required><br><br>
+    
+        <input type="file" name="photo" accept="image/*" required><br><br>
+    
+        <button type="submit">Submit Lost Item</button>
+    </form>
+    
+<footer class="footer">
+    
+    <p class="copy">© 2026 Nisarg Patel | All Rights Reserved</p>
+ 
+ </footer>
+ 
+
+</body>
+</html>
