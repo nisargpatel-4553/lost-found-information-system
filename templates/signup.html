@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+    </div>
+
+    <div class="nav-right">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+    </div>
+</div>
+
+<div class="form-box">
+    <form method="POST">
+        <h2>Create Account</h2>
+
+        <!-- EMAIL instead of username -->
+        <input type="email" name="email" placeholder="Enter Gmail (@gmail.com)" required>
+
+        <input type="password" name="password" placeholder="Enter Password" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<footer class="footer">
+    <p class="copy">© 2026 Nisarg Patel | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
